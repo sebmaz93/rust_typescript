@@ -22,5 +22,54 @@ fn main() {
         .filter(|(idx, _)| idx % 2 == 0)
         .skip(2)
         .take(2)
-        .for_each(|(_, x)| println!("{}", x))
+        .for_each(|(_, x)| println!("{}", x));
+
+    print_color(RGB);
+
+    let col = RGB::Green;
+
+    // use method that was implemented into the ENUM
+    // col.is_green()
+}
+
+enum RGB {
+    Red,
+    Green,
+    Blue,
+    Yellow,
+}
+
+impl RGB {
+    fn is_green(&self) -> bool {
+        if let RGB::Green = self {
+            return true;
+        }
+        return false
+    }
+
+    fn is_green_parts(&self) -> bool {
+        return match self {
+            RGB::Red => false,
+            RGB::Green => false,
+            RGB::Blue => true,
+            RGB::Yellow => true
+        }
+    }
+}
+
+fn print_color(color: RGB) {
+    match color: RGB {
+        RGB::Red => {
+            println!("Red")
+        }
+        RGB::Green => {
+            println!("Green")
+        }
+        RGB::Blue => {
+            println!("Blue")
+        }
+        RGB::Yellow => {
+            println!("Yellow")
+        }
+    }
 }
