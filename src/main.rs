@@ -1,7 +1,10 @@
 use std::fs::read_to_string;
 
 fn main() {
-    let it: Vec<_> = vec![1, 2, 3].iter().map(|i| i + 1).collect();
+    let it: Vec<_> = vec![1, 2, 3]
+        .iter()
+        .map(|i| i + 1)
+        .collect();
 
     println!("{:?}", it);
 
@@ -26,10 +29,13 @@ fn main() {
 
     print_color(RGB);
 
-    let col = RGB::Green;
+    // let col = RGB::Green
 
     // use method that was implemented into the ENUM
     // col.is_green()
+
+    practice(1);
+    practice(None)
 }
 
 enum RGB {
@@ -44,7 +50,7 @@ impl RGB {
         if let RGB::Green = self {
             return true;
         }
-        return false
+        return false;
     }
 
     fn is_green_parts(&self) -> bool {
@@ -52,24 +58,38 @@ impl RGB {
             RGB::Red => false,
             RGB::Green => false,
             RGB::Blue => true,
-            RGB::Yellow => true
-        }
+            RGB::Yellow => true,
+        };
     }
 }
 
 fn print_color(color: RGB) {
-    match color: RGB {
-        RGB::Red => {
-            println!("Red")
-        }
-        RGB::Green => {
-            println!("Green")
-        }
-        RGB::Blue => {
-            println!("Blue")
-        }
-        RGB::Yellow => {
-            println!("Yellow")
-        }
+    match color::RGB {
+        RGB::Red => { println!("Red") }
+        RGB::Green => { println!("Green") }
+        RGB::Blue => { println!("Blue") }
+        RGB::Yellow => { println!("Yellow") }
     }
+}
+
+struct Custom {
+    age: usize,
+    name: String,
+}
+
+enum Item {
+    Number(usize),
+    String(String),
+    MyCustom(Custom),
+}
+
+fn append(items: &mut Vec<Item>) {
+    items.push(Item::String("Hello folks".into()))
+}
+
+fn practice(num: Option<usize>) {
+    if num != None {
+        println!("USIZE");
+    }
+    println!("NONE")
 }
