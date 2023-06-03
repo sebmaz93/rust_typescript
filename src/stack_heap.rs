@@ -1,7 +1,3 @@
-// mod exr_1;
-mod exr_2;
-mod stack_heap;
-
 #[derive(Debug)]
 struct Item {
     count: usize,
@@ -29,4 +25,5 @@ fn main() {
     println!("{:?}", first);
 
     print_all_items(&items);
+    println!("{:?}", first);
 }
